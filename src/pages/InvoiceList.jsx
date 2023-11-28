@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useInvoiceListData } from "../redux/hooks";
 import { useDispatch } from "react-redux";
 import { deleteInvoice } from "../redux/invoicesSlice";
-import BulkEditModal from "../components/BulkEditModal";
+import SelectModal from "../components/SelectModal";
 
 const InvoiceList = () => {
   const { invoiceList, getOneInvoice } = useInvoiceListData();
@@ -24,9 +24,14 @@ const InvoiceList = () => {
     }
   };
   
-  const [showBulkEditModal, setShowBulkEditModal] = useState(false);
+  const [showSelectModal, setShowSelectModal] = useState(false);
+
   const handleBulkEditClick = () => {
-    setShowBulkEditModal(true);
+    setShowSelectModal(true);
+  };
+
+  const handleSelectModalClose = () => {
+    setShowSelectModal(false);
   };
 
   return (
@@ -67,11 +72,7 @@ const InvoiceList = () => {
                     Bulk Edit
                   </Button>
                 </div>
-                <BulkEditModal
-                  showModal={showBulkEditModal}
-                  closeModal={() => setShowBulkEditModal(false)}
-                  invoices={invoiceList}
-                />
+                {showSelectModal && <SelectModal show={showSelectModal} onHide={handleSelectModalClose} invoiceList={invoiceList} />}
               </div>
               <Table responsive>
                 <thead>

@@ -116,7 +116,7 @@ const InvoiceModal = (props) => {
                     TAX
                   </td>
                   <td className="text-end" style={{ width: "100px" }}>
-                    {props.currency} {props.taxAmmount}
+                    {props.currency} {props.taxAmount}
                   </td>
                 </tr>
                 {props.discountAmmount !== 0.0 && (
@@ -126,7 +126,7 @@ const InvoiceModal = (props) => {
                       DISCOUNT
                     </td>
                     <td className="text-end" style={{ width: "100px" }}>
-                      {props.currency} {props.discountAmmount}
+                      {props.currency} {props.discountAmount}
                     </td>
                   </tr>
                 )}

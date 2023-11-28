@@ -162,7 +162,7 @@ const InvoiceForm = () => {
       dispatch(updateInvoice({ id: updatedId, updatedInvoice: formData }));
       alert("Invoice updated successfully 🥳");
     } else if (isCopy) {
-      dispatch(addInvoice({ id: generateRandomId(), ...formData }));
+      dispatch(addInvoice({ id: generateRandomId(), ...formData }));  
       alert("Invoice added successfuly 🥳");
     } else {
       dispatch(addInvoice(formData));
