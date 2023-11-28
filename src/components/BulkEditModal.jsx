@@ -41,7 +41,6 @@ const handleShowItems = (invoiceId) => {
     const errors = [];
     const changesToDispatch = [];
   
-    // Calculate subtotal and add it to edited changes
     if (selectedItems && selectedItems.id) {
       let subtotal = 0;
   
@@ -106,7 +105,6 @@ const handleShowItems = (invoiceId) => {
       }
     });
   
-    // Validate and add all changes to editedChanges
     editedChanges.forEach((change) => {
       const { id, field, value } = change;
   
@@ -131,11 +129,20 @@ const handleShowItems = (invoiceId) => {
           }
           break;
         case "billToEmail":
+        case "billFromEmail":
           if (!value.endsWith("@gmail.com")) {
             errors.push(
               `Invoice with ID ${id}: Email should end with @gmail.com`
             );
           }
+          break;
+        case "taxRate":
+          case "discountRate":
+            if (isNaN(value) || value.trim() === '') {
+              errors.push(
+                `Invoice with ID ${id}: ${field} must be a numeric value`
+              );
+            }
           break;
         default:
           break;
@@ -150,7 +157,6 @@ const handleShowItems = (invoiceId) => {
     }
 
     changesToDispatch.push(selectedItems);
-    // Dispatch all changes at once
     Promise.all(
       changesToDispatch.map(async (change) => {
         const { id, field, value } = change;
@@ -164,7 +170,6 @@ const handleShowItems = (invoiceId) => {
     closeModal();
   };
   
-
   const handleCancel = () => {
     setEditedChanges([]);
     closeModal();
