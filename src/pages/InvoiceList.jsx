@@ -37,7 +37,7 @@ const InvoiceList = () => {
   return (
     <Row>
       <Col className="mx-auto" xs={12} md={8} lg={9}>
-        <h3 className="fw-bold pb-2 pb-md-4 text-center">Swipe Assignment</h3>
+        <h3 className="fw-bold pb-2 pb-md-4 text-center">Invoice Management</h3>
         <Card className="d-flex p-3 p-md-4 my-3 my-md-4 ">
           {isListEmpty ? (
             <div className="d-flex flex-column align-items-center">
